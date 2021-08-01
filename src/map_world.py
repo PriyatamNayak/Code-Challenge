@@ -1,9 +1,7 @@
 import os
 from src.config import (
-    MONSTER_MOVE,
     logging,
-    INPUT_FILE_NAME
-
+    DEFAULT_FILE_NAME
 )
 
 
@@ -37,6 +35,7 @@ def load_map():
         o Data is formatted as in world_map_small
         o No control/newline characters peppered through lines
     """
+    INPUT_FILE_NAME=  os.getenv('FILE_NAME', DEFAULT_FILE_NAME)
     with open(INPUT_FILE_NAME) as mapFile:
         for entry in mapFile:
             tmpCity = City(entry.split(' ', 1)[0])
